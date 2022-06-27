@@ -35,7 +35,7 @@ function App() {
       height: '100vh'
     }
 
-    const featureStyle = (feature: Feature) => ({
+    const featureStyle = (feature: any) => ({
         color: '#ff0000',
         weight: 1.5,
         opacity: 0.9,
