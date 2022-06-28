@@ -15,7 +15,7 @@ function App() {
     const [maxDensity, setMaxDensity] = useState(0);
 
     useEffect( () => {
-        fetch('/data/distritos-censales-densidad-poblacion-2021-cartografia-EPSG4326-v1.0.0.json')
+        fetch('/data/cartografia_secciones_cadiz_2022.json')
           .then(response => response.json())
           .then(data => { setMap({
                 geoJSON: data,
@@ -36,15 +36,16 @@ function App() {
     }
 
     const featureStyle = (feature: any) => ({
-        color: '#ff0000',
+        color: '#ffffff',
         weight: 1.5,
         opacity: 0.9,
-        fillOpacity: feature.properties?.DEN.replace(/,/g, '.') / 146100.0
+        fillColor: '#ff0000',
+        fillOpacity: feature.properties?.DEN.replace(/,/g, '.') / 34884.61
     })
 
     const onEachFeature = (feature:Feature, layer:Layer) => {
         if (feature.properties?.DEN) {
-            layer.bindTooltip(`Extensión: ${feature.properties.EXT.replace(/,/g, '.')} | Población: ${feature.properties.POB.replace(/,/g, '.')} | Densidad de población: ${feature.properties.DEN.replace(/,/g, '.')}`);
+            layer.bindTooltip(`Extensión: ${feature.properties.EXT.replace(/,/g, '.')} km2 | Población: ${feature.properties.POB.replace(/,/g, '.')} hab. | Densidad de población: ${feature.properties.DEN.replace(/,/g, '.')} hab/km2`);
         }
     }
 
