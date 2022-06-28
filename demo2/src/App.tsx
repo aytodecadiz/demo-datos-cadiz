@@ -13,7 +13,7 @@ function App() {
     })
 
     useEffect( () => {
-        fetch('/data/cartografia_EPSG4326_censo2022_cadiz.json')
+        fetch('/data/ubicaciones-fuentes-agua-potable-EPSG4326-v1.0.0.json')
           .then(response => response.json())
           .then(data => { setMap({
               geoJSON: data,
@@ -31,14 +31,14 @@ function App() {
     }
 
     const featureStyle = {
-        color: '#ff0000',
-        weight: 1.5,
-        opacity: 0.65
+        "color": "#ff7800",
+        "weight": 5,
+        "opacity": 0.65
     }
 
     const onEachFeature = (feature:Feature, layer:Layer) => {
-        if (feature.properties?.CUSEC) {
-          layer.bindTooltip(feature.properties.CUSEC)
+        if (feature.properties?.DES) {
+          layer.bindTooltip(feature.properties.DES)
         }
     }
 
@@ -53,7 +53,7 @@ function App() {
           >
               {map.geoJSON && (
                 <GeoJSON
-                  key={'mapa-geojson-1'}
+                  key={'mapa-geojson-2'}
                   attribution={'Ayuntamiento de Cádiz'}
                   data={map.geoJSON}
                   style={featureStyle}
