@@ -1,7 +1,7 @@
 {
-  "name": "demo-datos-cadiz-001",
+  "name": "demo-datos-cadiz-002",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
